@@ -1,0 +1,7 @@
+flask
+gunicorn
+catboost
+pickle-mixin
+scikit-learn
+numpy
+pandas
