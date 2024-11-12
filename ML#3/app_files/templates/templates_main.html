@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<style>
+    .label-cell {
+        margin-top: 10px;
+        padding-top: 0; 
+    }
+</style>
+
+<style>
+form{
+    margin:  auto;
+    width: 25%;
+    background-color: #ff6666;
+    border-radius: 5px;
+}
+
+table {
+        width: 100%;
+    }
+
+th {
+        text-align: left;
+    }
+
+td {
+        text-align: right;
+    }
+
+.result_depth {
+    margin: auto;
+    width: 25%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #00cc66;
+}
+.result_width {
+    margin: auto;
+    width: 25%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #33cc33;
+}
+
+
+.centered-text {
+    text-align: center; 
+    position: absolute;
+    top: 18%; 
+    left: 51%; 
+}
+</style>
+
+<head>
+    <title>Прогнозирование глубины и ширина сварного шва</title>
+</head>
+
+<form action="{{url_for('main')}}" method="POST">
+    <fieldset>
+        <legend>Введите значения</legend>
+        <table>
+            <tr>
+                <td style="margin-bottom: 10px;"><input name="IW" style="background-color: #EAEAEA;" type="number" required style="text-align: right;"></td>
+                <th class="label-cell">IW</th>
+            </tr>
+            <tr>
+                <td style="margin-bottom: 10px;"><input name="IF" style="background-color:  #EAEAEA;" type="number" required style="text-align: right;"></td>
+                <th class="label-cell">IF</th>
+            </tr>
+            <tr>
+                <td style="margin-bottom: 10px;"><input name="VW" style="background-color:  #EAEAEA;" type="number" required style="text-align: right;"></td>
+                <th class="label-cell">VW</th>
+            </tr>
+            <tr>
+                <td style="margin-bottom: 10px;"><input name="FP" style="background-color:  #EAEAEA;" type="number" required style="text-align: right;"></td>
+                <th class="label-cell">FP</th>
+            </tr>
+        </table>
+        <input type="submit" style="background-color:  #99ccff;">
+    </fieldset>
+</form>
+
+<div class="centered-text">
+    <p>Модель CatBoost</p>
+</div>
+
+<div class="result_depth" align="center">
+    {% if result_depth %}
+    <fieldset>
+        <legend style="font-size: 20px">Прогноз глубины сварного шва (Depth)</legend>
+        <p style="font-size: 30px"> {{result_depth}}</p>
+    </fieldset>
+    {% endif %}
+</div>
+
+<div class="result_width" align="center">
+    {% if result_width %}
+    <fieldset>
+        <legend style="font-size: 20px">Прогноз ширины сварного шва (Width)</legend>
+        <p style="font-size: 30px"> {{result_width}}</p>
+    </fieldset>
+    {% endif %}
+</div>
