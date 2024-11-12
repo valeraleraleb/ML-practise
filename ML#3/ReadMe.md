@@ -1,6 +1,7 @@
 [App](https://huggingface.co/spaces/valeralerleb/Predict_DW)
 
 A docker was deployed in the space, Gunicorn (Application server for running web applications) was launched in it.
+
 Next, main.py is launched in the container with the libraries:
 - flask (a framework for creating web applications)
 - Catboost
